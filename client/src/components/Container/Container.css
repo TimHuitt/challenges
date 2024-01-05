@@ -1,0 +1,9 @@
+#Container {
+  height: 28%;
+  width: 95%;
+  border: 1px solid white;
+  padding: 5px;
+}
+#Container p {
+  white-space: pre-wrap;
+}

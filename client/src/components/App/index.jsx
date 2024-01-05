@@ -1,12 +1,15 @@
 import "./App.css"
-
+import Header from '../Header'
+import Challenges from '../Challenges'
+import Code from '../Code'
 function App() {
 
   return (
     <>
       <div>
-        
-        <h1>Running...</h1>
+        <Header />
+        <Challenges />
+        <Code />
       </div>
     </>
   )
