@@ -1,9 +1,9 @@
 import './Container.css'
 
 const Container = ({ header, body }) => {
-
+  
   const bodyContent = typeof body === 'object'
-    ? body.map((item) => item)
+    ? body.map((item) => item + "\n\n")
     : body
 
   const ContainerID = (header === 'Hints')
