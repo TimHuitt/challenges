@@ -1,6 +1,12 @@
 #CodeBox {
   width: 100%;
   height: 80%;
-  background-color: rgb(9, 12, 18);
-  padding: 10px;
+  background-color: #0E171E;
+}
+#CodeBox textarea {
+  padding: 20px !important;
+  outline: none;
+}
+#CodeBox pre {
+  padding: 20px !important;
 }

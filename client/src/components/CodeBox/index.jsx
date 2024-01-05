@@ -1,8 +1,8 @@
-import './Codebox.css'
+import './prism.css';
+import './CodeBox.css'
 import React from 'react'
-import 'prismjs'
+import Prism from 'prismjs'
 import Editor from 'react-simple-code-editor';
-import './prismjs/components/prism.css';
 
 const CodeBox = () => {
 
@@ -22,8 +22,9 @@ const CodeBox = () => {
           height: '100%',
           fontFamily: '"Fira code", "Fira Mono", monospace',
           fontSize: 14,
-          border: '2px solid grey',
-          borderRadius: '10px'
+          border: '4px solid black',
+          borderBottom: '2px',
+          borderRadius: '10px 10px 0 0',
         }}
       />
     </div>

@@ -4,7 +4,12 @@ const Console = () => {
 
   return (
     <div id="Console">
-      <p>Console</p>
+      <div id="console-text">
+        
+      </div>
+      <div id="console-label">
+        <span>Console</span>
+      </div>
     </div>
   )
 }

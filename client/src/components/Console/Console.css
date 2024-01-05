@@ -1,6 +1,18 @@
 #Console {
+  position: relative;
   width: 100%;
   height: 20%;
-  background-color: rgb(16, 17, 19);
+  background-color: #141618;
+}
+#console-text {
+  height: 100%;
+  border: 4px solid #070c12;
+  border-radius: 0 0 10px 10px;
   padding: 10px;
+}
+#console-label {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: rgb(99, 104, 115);
 }

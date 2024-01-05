@@ -8,6 +8,17 @@
   height: 50px;
   background-color: rgb(16, 19, 20);
 }
+#header-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+#header-left small {
+  padding-bottom: 8px;
+  color: rgb(71, 80, 99);
+  font-size: 1rem;
+}
 #header-left p {
   display: flex;
   align-items: center;

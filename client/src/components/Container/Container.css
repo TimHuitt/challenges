@@ -1,9 +1,18 @@
-#Container {
+.Container {
   height: 28%;
   width: 95%;
-  border: 1px solid white;
-  padding: 5px;
-}
-#Container p {
+  padding: 5px 10px;
+  color: rgb(158, 161, 170);
+  border: 4px solid #070c12;
+  border-radius: 10px;
+  background-color: #141618;
+  overflow: auto;
   white-space: pre-wrap;
+}
+.Container h1 {
+  text-align: center;
+  padding: 10px 0;
+}
+.hints {
+  height: 40%;
 }

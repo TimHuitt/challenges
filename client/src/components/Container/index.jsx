@@ -5,9 +5,13 @@ const Container = ({ header, body }) => {
   const bodyContent = typeof body === 'object'
     ? body.map((item) => item)
     : body
-    
+
+  const ContainerID = (header === 'Hints')
+    ? 'Container hints'
+    : 'Container'
+
   return (
-    <div id="Container">
+    <div className={ContainerID}>
       <h1>{header}</h1>
       <p>{bodyContent}</p>
     </div>
