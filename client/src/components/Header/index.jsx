@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div id="Header">
       <div id="header-left">
-        <p>CodeDom</p>
+        <p>CodeChallenger</p>
         <small>Where the AI tells <b><u>you</u></b> what to do</small>
       </div>
       <div id="header-right">

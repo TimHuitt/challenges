@@ -27,8 +27,22 @@
   background-color: rgb(42, 46, 51);
 }
 #buttons-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 6%;
   width: 92%;
+}
+#buttons-challenges {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0 10% 0 4%;
+  grid-column: 1;
+}
+#buttons-code {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0 4% 0 8%;
+  grid-column: 2;
 }

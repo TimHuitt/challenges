@@ -22,7 +22,7 @@ const CodeBox = () => {
           height: '100%',
           fontFamily: '"Fira code", "Fira Mono", monospace',
           fontSize: 14,
-          border: '4px solid black',
+          boxShadow: 'inset 0 0 5px #444d7c',
           borderBottom: '2px',
           borderRadius: '10px 10px 0 0',
         }}
