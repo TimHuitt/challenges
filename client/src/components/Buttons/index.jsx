@@ -1,6 +1,59 @@
+import { useState, useEffect } from 'react'
 import './Buttons.css'
 
-const Buttons = () => {
+const Buttons = ({ setChallengeResponse }) => {
+  const [ requestData, setRequestData ] = useState({
+      'role': 'user', 
+      'content': {
+        'ID': ["js_beg_short_count_vowels", "js_beg_short_reverse_vowels", "js_beg_short_replace_vowels"],
+        'Language': 'Python',
+        'Difficulty': 'expert',
+        'Length': 'short',
+        'Request': ''
+      }
+  })
+  
+  const sendRequest = async () => {
+    const url = "http://localhost:4000/challenges";
+    
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+  
+      if (res.ok) {
+        const jsonData = await res.json();
+        return jsonData;
+      } else {
+        throw new Error("Invalid request!");
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  
+  const handleRequest = async () => {
+    try {
+      const resData = await sendRequest();
+  
+      if (resData) {
+        if (typeof resData.response === 'string') {
+          setChallengeResponse(JSON.parse(resData.response))
+        } else {
+          setChallengeResponse(resData.response)
+        }
+      } else {
+        console.log('no data')
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div id="Buttons">
       <div id="buttons-container">
@@ -10,7 +63,7 @@ const Buttons = () => {
         </div>
         <div id="buttons-code">
           <button>Save Current Solution</button>
-          <button>Next Challenge</button>
+          <button onClick={handleRequest}>Next Challenge</button>
         </div>
       </div>
     </div>
