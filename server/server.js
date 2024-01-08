@@ -6,7 +6,7 @@ require("dotenv").config();
 // require("./config/db.connection.js")
 
 const { PORT } = process.env;
-const apiRouter = require('./routes/api')
+const challengesRouter = require('./routes/challenges')
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
@@ -25,12 +25,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use("/module", modulesRouter);
-app.use("/", apiRouter)
-app.use("/api", apiRouter);
+
+// app.use("/", apiRouter)
+app.use("/challenges", challengesRouter);
 
 app.get("/", (req, res) => {
-  res.send("npm i -D auto-component");
+  res.send("incorrect path");
 });
 
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));

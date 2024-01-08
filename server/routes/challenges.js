@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const apiCtrl = require('../controllers/api')
+const challengesCtrl = require('../controllers/challenges')
 
 // GET module - index
-router.get("/", apiCtrl.main);
+router.post("/", challengesCtrl.challenges);
 
 
 module.exports = router
