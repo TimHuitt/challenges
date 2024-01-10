@@ -1,11 +1,20 @@
+import { useState } from 'react'
 import './Console.css'
 
-const Console = () => {
+const Console = ({ logData }) => {
+  const [ log, setLog ] = useState('')
 
   return (
     <div id="Console">
       <div id="console-text">
-        
+        {logData.output.map((line) => {
+          return(
+          <pre>{"> " + line}</pre>
+          )
+        })}
+        <div id="console-entry">
+          <input type='text' />
+        </div>
       </div>
       <div id="console-label">
         <span>Console</span>

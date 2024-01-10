@@ -4,10 +4,12 @@ import Header from '../Header'
 import Challenges from '../Challenges'
 import Buttons from '../Buttons'
 import Code from '../Code'
+import Settings from '../Settings'
 
 import "./App.css"
 
 function App() {
+  const [ showSettings, setShowSettings ] = useState(false)
   const [ challengeResponse, setChallengeResponse ] = useState({
     ID: 'py_beg_short_find_max_number',
     challenge: 'Write a function that takes a list of numbers and returns the maximum number in the list.',
@@ -36,7 +38,8 @@ function App() {
     <>
       <div>
         <Header />
-        <Challenges challengeResponse={challengeResponse} />
+        <Settings showSettings={showSettings} />
+        <Challenges challengeResponse={challengeResponse} setShowSettings={setShowSettings}/>
         <Code />
         <Buttons setChallengeResponse={setChallengeResponse} />
       </div>

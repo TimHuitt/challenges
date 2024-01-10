@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import Container from '../Container'
 import './Challenges.css'
 
-const Challenges = ({ challengeResponse }) => {
+const Challenges = ({ challengeResponse, setShowSettings }) => {
+
+  // retrieve static data
 //   const [data, setData] = useState({})
 // 
 //   useEffect(() => {
@@ -18,10 +20,16 @@ const Challenges = ({ challengeResponse }) => {
 // 
 //     fetchData()
 //   }, [])
-  console.log(challengeResponse)
+  const openSettings = () => {
+    setShowSettings(true)
+  }
+
   return (
     <div id="Challenges">
-      <Container header={'Challenge 1'} body={challengeResponse.challenge} />
+      <div className="settings-button" onClick={openSettings}>
+        Config
+      </div>
+      <Container header={'Challenge'} body={challengeResponse.challenge} />
       <Container header={'Examples'} body={challengeResponse.testCases} />
       <Container header={'Hints'} body={[challengeResponse.textHints, challengeResponse.codeHints, challengeResponse.solution]} />
     </div>

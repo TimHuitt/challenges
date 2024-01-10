@@ -7,6 +7,7 @@ require("dotenv").config();
 
 const { PORT } = process.env;
 const challengesRouter = require('./routes/challenges')
+const consoleRouter = require('./routes/console')
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 
 // app.use("/", apiRouter)
 app.use("/challenges", challengesRouter);
+app.use("/console", consoleRouter);
 
 app.get("/", (req, res) => {
   res.send("incorrect path");

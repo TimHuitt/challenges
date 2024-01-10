@@ -1,4 +1,5 @@
 #CodeBox {
+  position: relative;
   width: 100%;
   height: 80%;
   background-color: #151722;
@@ -9,4 +10,25 @@
 }
 #CodeBox pre {
   padding: 20px !important;
+}
+#run-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  height: 50px;
+  width: 100px;
+  border: 2px solid green;
+  border-radius: 5px;
+  background-color: rgb(38, 82, 38);
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+#run-button:hover {
+  background-color: green;
+}
+#run-button:active {
+  background-color: rgb(16, 66, 16);
 }

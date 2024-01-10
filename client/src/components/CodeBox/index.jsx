@@ -1,19 +1,69 @@
 import './prism.css';
 import './CodeBox.css'
-import React from 'react'
+import React, { useRef } from 'react'
 import Prism from 'prismjs'
 import Editor from 'react-simple-code-editor';
 
-const CodeBox = () => {
+const CodeBox = ({ setLogData }) => {
+  const textRef = useRef(null)
 
   const [code, setCode] = React.useState(
     `console.log('Welcome!')
-  console.log('write some code here')`
+  console.log('write some code here')
+    console.log('write some MORE code here')`
   );
+
+  const sendRequest = async () => {
+    const url = "http://localhost:4000/console";
+
+    const textareaElement = textRef.current;
+    const lines = textareaElement.props.value.split('\n');
+    let formattedCode = lines.map(line => line.trimEnd()).join('\n');
+    
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({content: formattedCode}),
+      });
+
+      if (res.ok) {
+        const jsonData = await res.json();
+        return jsonData;
+      } else {
+        throw new Error("Invalid request!");
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleRun = async () => {
+
+    try {
+      const resData = await sendRequest();
+
+      if (resData) {
+        if (typeof resData.response === 'string') {
+          setLogData(JSON.parse(resData.response))
+        } else {
+          setLogData(resData.response)
+        }
+      } else {
+        console.log('no data')
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 
   return (
     <div id="CodeBox">
       <Editor
+        ref={textRef}
         value={code}
         onValueChange={code => setCode(code)}
         highlight={code => Prism.highlight(code, Prism.languages.js)}
@@ -27,6 +77,9 @@ const CodeBox = () => {
           borderRadius: '10px 10px 0 0',
         }}
       />
+      <div id="run-button">
+        <span onClick={handleRun}>Run!</span>
+      </div>
     </div>
   )
 }

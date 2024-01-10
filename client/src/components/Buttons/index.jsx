@@ -5,7 +5,7 @@ const Buttons = ({ setChallengeResponse }) => {
   const [ requestData, setRequestData ] = useState({
       'role': 'user', 
       'content': {
-        'ID': ["js_beg_short_count_vowels", "js_beg_short_reverse_vowels", "js_beg_short_replace_vowels"],
+        'ID': [],
         'Language': 'Python',
         'Difficulty': 'expert',
         'Length': 'short',

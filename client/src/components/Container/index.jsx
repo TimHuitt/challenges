@@ -2,9 +2,18 @@ import './Container.css'
 
 const Container = ({ header, body }) => {
   
-  const bodyContent = typeof body === 'object'
-    ? body.map((item) => item + "\n\n")
-    : body
+
+  const formatBody = (data) => {
+    if (typeof data !== 'object' || data === null) {
+      return data;
+    }
+  
+    return Object.entries(data)
+      .map(([key, value]) => `${key}:\n${formatBody(value)}\n`)
+      .join('\n');
+  };
+  
+  const bodyContent = formatBody(body);
 
   const ContainerID = (header === 'Hints')
     ? 'Container hints'
