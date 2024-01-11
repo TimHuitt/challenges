@@ -3,7 +3,7 @@ const OpenAI = require("openai");
 async function consoleText(req, res) {
   const openai = new OpenAI();
   
-  console.log(req.body)
+  console.log(req.body.content)
 
   // Evaluate and run the following JavaScript code and provide the console output
 
@@ -29,7 +29,7 @@ async function consoleText(req, res) {
     },
     {
       role: 'user',
-      content: req.body.content
+      content: req.body
     }],
       model: "gpt-4-1106-preview",
       response_format: { "type": "json_object" }
