@@ -4,12 +4,12 @@ const Settings = ({ showSettings }) => {
   const hidden = showSettings ? 'block' : 'none'
   
   return (
-    <div class="Settings" style={{ display: hidden }}>
-      <form class="settings-container">
+    <div className="Settings" style={{ display: hidden }}>
+      <form className="settings-container">
         <h1>Challenge Settings</h1>
   
-        <div class="settings-language">
-          <label for="language">Language</label>
+        <div className="settings-language">
+          <label htmlFor="language">Language</label>
           <select id="language" name="language">
             <option value="python">Python</option>
             <option value="javascript">JavaScript</option>
@@ -18,8 +18,8 @@ const Settings = ({ showSettings }) => {
           </select>
         </div>
   
-        <div class="settings-difficulty">
-          <label for="difficulty">Difficulty</label>
+        <div className="settings-difficulty">
+          <label htmlFor="difficulty">Difficulty</label>
           <select id="difficulty" name="difficulty">
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
@@ -27,8 +27,8 @@ const Settings = ({ showSettings }) => {
           </select>
         </div>
   
-        <div class="settings-length">
-          <label for="length">Length of Your Solution</label>
+        <div className="settings-length">
+          <label htmlFor="length">Length of Your Solution</label>
           <select id="length" name="length">
             <option value="one-liner">One-liner</option>
             <option value="short">Short</option>
@@ -37,12 +37,12 @@ const Settings = ({ showSettings }) => {
           </select>
         </div>
   
-        <div class="settings-request">
-          <label for="request">Request</label>
+        <div className="settings-request">
+          <label htmlFor="request">Request</label>
           <textarea id="request" name="request" rows="4" cols="50" placeholder="Optional details regarding the created challenge"></textarea>
         </div>
   
-        <div class="settings-buttons">
+        <div className="settings-buttons">
           <button type="submit">Save Settings</button>
           <button type="submit">Cancel</button>
         </div>
