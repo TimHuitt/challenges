@@ -27,7 +27,7 @@ const Challenges = ({ challengeResponse, setShowSettings }) => {
   return (
     <div id="Challenges">
       <div className="settings-button" onClick={openSettings}>
-        Config
+        <img src="/cog.svg" />
       </div>
       <Container header={'Challenge'} body={challengeResponse.challenge} />
       <Container header={'Examples'} body={challengeResponse.testCases} />

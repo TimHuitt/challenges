@@ -77,3 +77,66 @@ Your response should strictly follow the following structure:
       ],
       "Solution": "function countVowelStatistics(str) {\n  const vowels = { 'a': 0, 'e': 0, 'i': 0, 'o': 0, 'u': 0 };\n  str.toLowerCase().split('').forEach(char => { if ('aeiou'.includes(char)) vowels[char]++; });\n  return vowels;\n}"
     }
+
+
+EXPERT LEVEL EXAMPLE:
+
+{
+  ID: 'js_expert_long_graph_coloring',
+  challenge: "Implement a function 'optimalGraphColoring' that takes an adjacency matrix of an undirected graph as an input, and returns an array with the colors assigned to each vertex, such that no two adjacent vertices have the same color and the number of colors used is minimized. For simplification, colors can be represented as integers starting from 1, and the graph does not contain any self-loops or parallel edges. Assume that the input graph is connected.",
+  textHints: [
+    'Study graph coloring and chromatic number concepts.',
+    'A greedy algorithm might not always give an optimal solution but try to optimize as much as possible.',
+    'Think about how you can determine if a color can be assigned to a vertex without violating the conditions.',
+    'Explore backtracking as it might help you find the optimal solution.',
+    'Read about heuristics which can improve the efficiency of your coloring algorithm, such as ordering vertices by degree.'
+  ],
+  codeHints: [
+    'Use a function that takes the current vertex, available colors, and the graph as parameters to check if the color can be assigned.',
+    'Make sure to create a deep copy of color assignments before passing it into recursive calls to avoid unintended mutations.',
+    'Implement backtracking by iterating over available colors and proceeding to the next vertex if no conflict is found.',
+    'Keep track of the number of colors used and try to minimize that number in each iteration.',
+    'An adjacency matrix can be accessed using two indices, matrix[vertex1][vertex2], to check if two vertices are adjacent.'
+  ],
+  testCases: [
+    'input: [[0, 1, 1, 1], [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 1, 0]], output: [1, 2, 3, 2]',
+    'input: [[0, 1], [1, 0]], output: [1, 2]',
+    'input: [[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]], output: [1, 2, 1, 3]',
+    'input: [[0, 1, 0, 1, 0], [1, 0, 1, 0, 0], [0, 1, 0, 1, 1], [1, 0, 1, 0, 1], [0, 0, 1, 1, 0]], output: [1, 2, 3, 4, 2]'
+  ],
+  Solution: 'const optimalGraphColoring = (adjMatrix) => {\n' +
+    '  const V = adjMatrix.length;\n' +
+    '  const colors = new Array(V);\n' +
+    '  colors.fill(0);\n' +
+    '  const colorCounts = [];\n' +
+    '\n' +
+    '  function isSafe(v, c) {\n' +
+    '    for (let i = 0; i < V; i++) {\n' +
+    '      if (adjMatrix[v][i] && c === colors[i]) return false;\n' +
+    '    }\n' +
+    '    return true;\n' +
+    '  }\n' +
+    '\n' +
+    '  function graphColoringUtil(v) {\n' +
+    '    if (v === V) return true;\n' +
+    '\n' +
+    '    for (let c = 1; c <= V; c++) {\n' +
+    '      if (isSafe(v, c)) {\n' +
+    '        colors[v] = c;\n' +
+    '        colorCounts[c] = (colorCounts[c] || 0) + 1;\n' +
+    '\n' +
+    '        if (graphColoringUtil(v + 1)) return true;\n' +
+    '\n' +
+    '        colors[v] = 0;\n' +
+    '        colorCounts[c]--;\n' +
+    '      }\n' +
+    '    }\n' +
+    '\n' +
+    '    return false;\n' +
+    '  }\n' +
+    '\n' +
+    '  graphColoringUtil(0);\n' +
+    '\n' +
+    '  return colors;\n' +
+    '};'
+}

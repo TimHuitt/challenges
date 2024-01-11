@@ -3,15 +3,13 @@ import './Buttons.css'
 
 const Buttons = ({ setChallengeResponse }) => {
   const [ requestData, setRequestData ] = useState({
-      'role': 'user', 
-      'content': {
-        'ID': [],
-        'Language': 'Python',
-        'Difficulty': 'expert',
-        'Length': 'short',
-        'Request': ''
-      }
+    'ID': [],
+    'Language': 'Python',
+    'Difficulty': 'beginner',
+    'Length': 'short',
+    'Request': ''
   })
+  
   
   const sendRequest = async () => {
     const url = "http://localhost:4000/challenges";
@@ -22,7 +20,7 @@ const Buttons = ({ setChallengeResponse }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestData),
+        body: JSON.stringify({content: requestData}),
       });
   
       if (res.ok) {
