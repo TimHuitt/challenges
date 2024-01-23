@@ -1,6 +1,13 @@
+import { useState } from 'react'
 import './Header.css'
 
 const Header = () => {
+  const [ showMenu, setShowMenu ] = useState(false)
+
+  const handleLogin = () => {
+    setShowMenu(!!showMenu)  
+  }
+
   return (
     <div id="Header">
       <div id="header-left">
@@ -9,7 +16,7 @@ const Header = () => {
       </div>
       <div id="header-right">
         <div id="user-icon">
-          <p>User</p>
+          <p onClick={handleLogin}>User</p>
         </div>
       </div>
     </div>

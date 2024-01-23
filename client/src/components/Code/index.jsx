@@ -6,11 +6,11 @@ import './Code.css'
 
 const Code = () => {
 
-  const [ logData, setLogData ] = useState({output:['console data will appear here', 'testing']})
+  const [ logData, setLogData ] = useState(['console output will appear here'])
 
   return (
     <div id="Code">
-      <CodeBox setLogData={setLogData} />
+      <CodeBox setLogData={setLogData} logData={logData} />
       <Console logData={logData} />
     </div>
   )

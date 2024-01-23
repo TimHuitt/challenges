@@ -7,7 +7,7 @@ const Console = ({ logData }) => {
   return (
     <div id="Console">
       <div id="console-text">
-        {logData.output.map((line) => {
+        {logData.map((line) => {
           return(
           <pre>{"> " + line}</pre>
           )

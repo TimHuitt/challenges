@@ -4,22 +4,6 @@ import './Challenges.css'
 
 const Challenges = ({ challengeResponse, setShowSettings }) => {
 
-  // retrieve static data
-//   const [data, setData] = useState({})
-// 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const res = await fetch('/data.json')
-//         const jsonData = await res.json()
-//         setData(jsonData)
-//       } catch (err) {
-//         console.error(err)
-//       }
-//     }
-// 
-//     fetchData()
-//   }, [])
   const openSettings = () => {
     setShowSettings(true)
   }

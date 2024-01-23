@@ -12,25 +12,22 @@ function App() {
   const [ showSettings, setShowSettings ] = useState(false)
   const [ challengeResponse, setChallengeResponse ] = useState({
     ID: 'py_beg_short_find_max_number',
-    challenge: 'Write a function that takes a list of numbers and returns the maximum number in the list.',
+    challenge: `
+      Click the cog to adjust challenge settings\n
+      Click "Generate New Challenge"\n
+      Add your code to the code editor\n
+      Click run to execute your code
+    `,
     textHints: [
-      'Consider looping through the list and keeping track of the maximum value seen so far.',
-      'You can initialize the maximum value as the first element in the list and then compare it with the rest of the elements in the list.'
+      'Hints will appear here',
+      'Choose general hints for topic related hints',
+      'Choose code hints for code specific hints'
     ],
-    codeHints: [
-      'You can use the built-in max() function to find the maximum number in a list.'
-    ],
+    codeHints: [],
     testCases: [
-      'Test the function with an empty list, a list with only one element, and a list with multiple elements to ensure the function works correctly in all cases.'
+      'Input/Output expectations with example test cases will appear here'
     ],
-    Solution: 'def find_max_number(numbers):\n' +
-      '    if not numbers:\n' +
-      '        return None\n' +
-      '    max_num = numbers[0]\n' +
-      '    for num in numbers:\n' +
-      '        if num > max_num:\n' +
-      '            max_num = num\n' +
-      '    return max_num'
+    Solution: ''
   })
 
   

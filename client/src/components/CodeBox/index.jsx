@@ -4,7 +4,7 @@ import React, { useRef } from 'react'
 import Prism from 'prismjs'
 import Editor from 'react-simple-code-editor';
 
-const CodeBox = ({ setLogData }) => {
+const CodeBox = ({ logData, setLogData }) => {
   const textRef = useRef(null)
 
   const [code, setCode] = React.useState(
@@ -26,7 +26,7 @@ const CodeBox = ({ setLogData }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({content: formattedCode}),
+        body: JSON.stringify({content: `Language: javascript, Challenge: 'print "hello" to console', Code: ${formattedCode}`}),
       });
 
       if (res.ok) {
@@ -44,12 +44,15 @@ const CodeBox = ({ setLogData }) => {
 
     try {
       const resData = await sendRequest();
-
       if (resData) {
         if (typeof resData.response === 'string') {
-          setLogData(JSON.parse(resData.response))
+          
+          console.log(logData)
+          console.log(logData.concat(JSON.parse(resData.response).output))
+
+          setLogData(logData.concat(JSON.parse(resData.response).output))
         } else {
-          setLogData(resData.response)
+          setLogData(logData.concat(resData.response.output))
         }
       } else {
         console.log('no data')

@@ -41,8 +41,11 @@
 }
 #buttons-code {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 50px;
   padding: 0 4% 0 8%;
   grid-column: 2;
+}
+#buttons-code btn {
+  background: rgb(12, 146, 12);
 }
