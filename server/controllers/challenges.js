@@ -2,16 +2,7 @@ const OpenAI = require("openai");
 
 async function challenges(req, res) {
   const openai = new OpenAI();
-  console.log(req.body.content)
-  console.log({
-    role: 'user',
-    content: `
-      ID: req.body.id,
-      Language: req.body.language,
-      Length: req.body.length,
-      Request: req.body.request,
-    `
-  })
+  console.log(`ID: ${req.body.id}, Language: ${req.body.language}, Difficulty: ${req.body.difficulty}, Length: ${req.body.length}, Request: ${req.body.request}`)
   try {
     const completion = await openai.chat.completions.create({
       messages: [{ 
