@@ -1,8 +1,17 @@
+
+import { useStateContext } from '../../StateContext';
 import './Settings.css'
 
-const Settings = ({ showSettings }) => {
+const Settings = () => {
+  const { requestData, setStateData } = useStateContext();
+  const { showSettings, setShowSettings } = useStateContext();
   const hidden = showSettings ? 'block' : 'none'
   
+
+  const handleCancel = () => {
+    setShowSettings(false)
+  }
+
   return (
     <div className="Settings" style={{ display: hidden }}>
       <form className="settings-container">
@@ -44,7 +53,7 @@ const Settings = ({ showSettings }) => {
   
         <div className="settings-buttons">
           <button type="submit">Save Settings</button>
-          <button type="submit">Cancel</button>
+          <button onClick={ handleCancel }>Cancel</button>
         </div>
       </form>
     </div>

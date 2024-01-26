@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Header from '../Header'
 import Challenges from '../Challenges'
 import Buttons from '../Buttons'
 import Code from '../Code'
 import Settings from '../Settings'
-
+import { StateProvider } from '../../StateContext'
 import "./App.css"
 
 function App() {
-  const [ showSettings, setShowSettings ] = useState(false)
   const [ challengeResponse, setChallengeResponse ] = useState({
     ID: 'py_beg_short_find_max_number',
     challenge: `
@@ -32,15 +31,17 @@ Click run to execute your code
 
   
   return (
+    <StateProvider>
     <>
       <div>
         <Header />
-        <Settings showSettings={showSettings} />
-        <Challenges challengeResponse={challengeResponse} setShowSettings={setShowSettings}/>
+        <Settings />
+        <Challenges challengeResponse={challengeResponse} />
         <Code />
         <Buttons setChallengeResponse={setChallengeResponse} />
       </div>
     </>
+    </StateProvider>
   )
 }
 

@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useStateContext } from '../../StateContext';
 import Container from '../Container'
 import './Challenges.css'
 
-const Challenges = ({ challengeResponse, setShowSettings }) => {
+const Challenges = ({ challengeResponse }) => {
+
+  const { showSettings, setShowSettings } = useStateContext();
 
   const openSettings = () => {
     setShowSettings(true)

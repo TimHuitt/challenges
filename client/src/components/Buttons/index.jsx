@@ -2,13 +2,7 @@ import { useState, useEffect } from 'react'
 import './Buttons.css'
 
 const Buttons = ({ setChallengeResponse }) => {
-  const [ requestData, setRequestData ] = useState({
-    'ID': [],
-    'Language': 'Python',
-    'Difficulty': 'beginner',
-    'Length': 'short',
-    'Request': ''
-  })
+  
   
   
   const sendRequest = async () => {
