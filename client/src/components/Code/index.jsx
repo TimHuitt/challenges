@@ -6,7 +6,7 @@ import './Code.css'
 
 const Code = () => {
 
-  const [ logData, setLogData ] = useState(['console output will appear here'])
+  const [ logData, setLogData ] = useState([''])
 
   return (
     <div id="Code">

@@ -6,8 +6,8 @@ const Container = ({ header, body }) => {
   let solution
 
   if (header === 'Hints') {
-    textHints = body[0]
-    codeHints = body[1]
+    textHints = body[0].concat(body[1])
+    // codeHints = body[1]
     solution = body[2]
   }
 
@@ -16,15 +16,19 @@ const Container = ({ header, body }) => {
       return data;
     }
 
-    // if (Array.isArray(data)){
-    //   return data.map((item, index) => `${index + 1}: ${item}`).join('\n')
-    // }
     if (header === 'Hints') {
-      return textHints.map((item, index) => `${index + 1}: ${item}`).join('\n\n')
+      if (Array.isArray(data)){
+        return textHints.map((item, index) => `${item}`).join('\n\n')
+      } else {
+        return Object.entries(data)
+        .filter(([key, value]) => value && value.length > 2)
+        .map(([key, value]) => `${formatBody(value)}\n`)
+        .join('\n');
+      }
     } else {
       return Object.entries(data)
         .filter(([key, value]) => value && value.length > 2)
-        .map(([key, value]) => `Example ${parseInt(key) + 1}: ${formatBody(value)}\n`)
+        .map(([key, value]) => `${formatBody(value)}\n`)
         .join('\n');
     }
   }

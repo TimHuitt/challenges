@@ -60,7 +60,7 @@ const Buttons = ({ setChallengeResponse }) => {
           <button>Code Hint</button>
         </div>
         <div id="buttons-code">
-          {/* <button>Save Current Solution</button> */}
+          <button>Give Up</button>
           <button onClick={handleRequest}>Generate New Challenge</button>
         </div>
       </div>

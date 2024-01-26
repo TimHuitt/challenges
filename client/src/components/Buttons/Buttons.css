@@ -11,20 +11,23 @@
   height: 50px;
   min-width: 100px;
   padding: 0 20px;
-  color: rgb(131, 134, 150);
+  color: var(--lightest);
   font-size: 1.25rem;
-  border: 2px solid black;
+  border: 2px solid var(--darkest);
   border-radius: 10px;
-  background-color: rgb(23, 29, 37);
+  background-color: var(--dark-bg);
   cursor: pointer;
 }
 #Buttons button:hover {
-  color: rgb(38, 39, 44);
-  background-color: rgb(130, 141, 157);
+  color: var(--bg);
+  background-color: var(--light);
+}
+.invert button:hover {
+  color: var(--lightest);
 }
 #Buttons button:active {
-  color: rgb(161, 165, 182);
-  background-color: rgb(42, 46, 51);
+  color: var(--lightest);
+  background-color: var(--bg);
 }
 #buttons-container {
   display: grid;
@@ -41,11 +44,23 @@
 }
 #buttons-code {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 50px;
   padding: 0 4% 0 8%;
   grid-column: 2;
 }
-#buttons-code btn {
-  background: rgb(12, 146, 12);
+#buttons-code button:hover {
+  color: var(--lightest);
+}
+
+#buttons-code button:first-child {
+  background-color: var(--red);
+  opacity: .5;
+}
+#buttons-code button:last-child {
+  background-color: var(--blue);
+  opacity: .5;
+}
+#buttons-code button:hover {
+  opacity: 1;
 }

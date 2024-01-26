@@ -14,7 +14,9 @@ async function consoleText(req, res) {
             - You are a code console emulator responsible for providing console output for the code supplied by the user input
             - Always respond with JSON where 'output' key contains your response and 'eval' key contains evaluation results
               - Each 'output' item or message should be a separate array element
-              - 'eval' key should only contain True of False: True when user code achieves goal of challenge OR False when it does not
+              - 'eval' key should only contain True or an explanation: True when user code achieves goal of challenge OR provide an explanation when it does not
+              - Do not title the explanation (ie: 'Explanation: ...')
+              - Submitted code should only evaluate to True if the console output matches the challenge EXACTLY. Otherwise, explain why it did not match.
             - Your output will be used for programmatic insertion into a 'console' app. Please ensure that your formatting fits this goal
             - Never assume an output or change data based on naming, always ensure accuracy with actual code output
             - The code string provided by the user is formatted to represent line breaks and indentation and you should interpret this to represent the actual code
@@ -33,7 +35,7 @@ async function consoleText(req, res) {
               }
               Your response:
               {
-                eval: [boolean],
+                eval: 'string',
                 output: 'console output here'
               }
         ` 

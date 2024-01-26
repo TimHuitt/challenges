@@ -72,12 +72,11 @@ const CodeBox = ({ logData, setLogData }) => {
         highlight={code => Prism.highlight(code, Prism.languages.js)}
         padding={10}
         style={{
-          height: '100%',
           fontFamily: '"Fira code", "Fira Mono", monospace',
           fontSize: 14,
-          boxShadow: 'inset 0 0 5px #444d7c',
           borderBottom: '2px',
           borderRadius: '10px 10px 0 0',
+          height: '100%',
         }}
       />
       <div id="run-button">
