@@ -1,31 +1,33 @@
 import { useState, useEffect } from 'react'
+import { useStateContext } from '../../StateContext';
 import './Buttons.css'
 
 const Buttons = ({ setChallengeResponse }) => {
   
+  const { requestData, setRequestData } = useStateContext();
   
   
   const sendRequest = async () => {
     const url = "http://localhost:4000/challenges";
-    
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({content: requestData}),
-      });
-  
-      if (res.ok) {
-        const jsonData = await res.json();
-        return jsonData;
-      } else {
-        throw new Error("Invalid request!");
-      }
-    } catch (err) {
-      console.log(err.message);
-    }
+    console.log(requestData)
+  //   try {
+  //     const res = await fetch(url, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({content: requestData}),
+  //     });
+  // 
+  //     if (res.ok) {
+  //       const jsonData = await res.json();
+  //       return jsonData;
+  //     } else {
+  //       throw new Error("Invalid request!");
+  //     }
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
   };
   
   const handleRequest = async () => {

@@ -3,20 +3,21 @@ import React, { createContext, useContext, useState } from 'react';
   const StateContext = createContext();
 
   export const StateProvider = ({ children }) => {
-    const [ stateData, setStateData ] = useState({
+
+    const [ requestData, setRequestData ] = useState({
       'ID': [],
       'Language': 'Python',
       'Difficulty': 'beginner',
       'Length': 'short',
-      'State': ''
+      'Request': ''
     })
 
     
     const [ showSettings, setShowSettings ] = useState(false)
     
     const value = {
-      stateData,
-      setStateData,
+      requestData,
+      setRequestData,
       showSettings,
       setShowSettings,
     }

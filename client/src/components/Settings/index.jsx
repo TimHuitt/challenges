@@ -3,7 +3,7 @@ import { useStateContext } from '../../StateContext';
 import './Settings.css'
 
 const Settings = () => {
-  const { requestData, setStateData } = useStateContext();
+  const { requestData, setRequestData } = useStateContext();
   const { showSettings, setShowSettings } = useStateContext();
   const hidden = showSettings ? 'block' : 'none'
   
@@ -12,9 +12,26 @@ const Settings = () => {
     setShowSettings(false)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const language = e.target[0].value
+    const difficulty = e.target[1].value
+    const length = e.target[2].value
+    const request = e.target[3].value
+    
+    setRequestData({
+      'ID': [],
+      'Language': {language},
+      'Difficulty': {difficulty},
+      'Length': {length},
+      'Request': {request}
+    })
+  }
+
   return (
     <div className="Settings" style={{ display: hidden }}>
-      <form className="settings-container">
+      <form className="settings-container" onSubmit={handleSubmit}>
         <h1>Challenge Settings</h1>
   
         <div className="settings-language">
