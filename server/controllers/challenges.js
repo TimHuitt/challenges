@@ -2,7 +2,7 @@ const OpenAI = require("openai");
 
 async function challenges(req, res) {
   const openai = new OpenAI();
-  console.log(`ID: ${req.body.id}, Language: ${req.body.language}, Difficulty: ${req.body.difficulty}, Length: ${req.body.length}, Request: ${req.body.request}`)
+  console.log(`ID: ${req.body.content.ID}, Language: ${req.body.content.language}, Difficulty: ${req.body.content.difficulty}, Length: ${req.body.content.length}, Request: ${req.body.content.request}`)
   try {
     const completion = await openai.chat.completions.create({
       messages: [{ 
@@ -48,13 +48,13 @@ async function challenges(req, res) {
       },
       {
         role: 'user',
-        content: `ID: ${req.body.id}, Language: ${req.body.language}, Difficulty: ${req.body.difficulty}, Length: ${req.body.length}, Request: ${req.body.request}`
+        content: `ID: ${req.body.content.id}, Language: ${req.body.content.language}, Difficulty: ${req.body.content.difficulty}, Length: ${req.body.content.length}, Request: ${req.body.content.request}`
       }],
       model: "gpt-4-1106-preview",
       response_format: { "type": "json_object" }
     });
 
-    console.log(JSON.parse(completion.choices[0].message.content));
+    // console.log(JSON.parse(completion.choices[0].message.content));
 
     res.status(200).json({ response: completion.choices[0].message.content });
     

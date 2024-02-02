@@ -9,28 +9,27 @@ const Buttons = ({ setChallengeResponse }) => {
   
   const sendRequest = async () => {
     const url = "http://localhost:4000/challenges";
-    console.log(requestData)
-  //   try {
-  //     const res = await fetch(url, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({content: requestData}),
-  //     });
-  // 
-  //     if (res.ok) {
-  //       const jsonData = await res.json();
-  //       return jsonData;
-  //     } else {
-  //       throw new Error("Invalid request!");
-  //     }
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({content: requestData}),
+      });
+  
+      if (res.ok) {
+        const jsonData = await res.json();
+        return jsonData;
+      } else {
+        throw new Error("Invalid request!");
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
   };
   
-  const handleRequest = async () => {
+  const getChallenge = async () => {
     try {
       const resData = await sendRequest();
   
@@ -57,7 +56,7 @@ const Buttons = ({ setChallengeResponse }) => {
         </div>
         <div id="buttons-code">
           <button>Give Up</button>
-          <button onClick={handleRequest}>Generate New Challenge</button>
+          <button onClick={getChallenge}>Generate New Challenge</button>
         </div>
       </div>
     </div>

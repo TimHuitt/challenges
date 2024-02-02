@@ -15,18 +15,20 @@ const Settings = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const language = e.target[0].value
-    const difficulty = e.target[1].value
-    const length = e.target[2].value
-    const request = e.target[3].value
-    
+    const language = e.target.form.language.value
+    const difficulty = e.target.form.difficulty.value
+    const length = e.target.form.length.value
+    const request = e.target.form.request.value
+
     setRequestData({
       'ID': [],
-      'Language': {language},
-      'Difficulty': {difficulty},
-      'Length': {length},
-      'Request': {request}
+      'language': language,
+      'difficulty': difficulty,
+      'length': length,
+      'request': request
     })
+
+    setShowSettings(false)
   }
 
   return (
@@ -69,7 +71,7 @@ const Settings = () => {
         </div>
   
         <div className="settings-buttons">
-          <button type="submit">Save Settings</button>
+          <button onClick={ handleSubmit }>Save Settings</button>
           <button onClick={ handleCancel }>Cancel</button>
         </div>
       </form>

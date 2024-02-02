@@ -6,10 +6,10 @@ import React, { createContext, useContext, useState } from 'react';
 
     const [ requestData, setRequestData ] = useState({
       'ID': [],
-      'Language': 'Python',
-      'Difficulty': 'beginner',
-      'Length': 'short',
-      'Request': ''
+      'language': 'Python',
+      'difficulty': 'beginner',
+      'length': 'short',
+      'request': ''
     })
 
     

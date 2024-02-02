@@ -3,6 +3,7 @@ import './CodeBox.css'
 import React, { useRef } from 'react'
 import Prism from 'prismjs'
 import Editor from 'react-simple-code-editor';
+import { useStateContext } from '../../StateContext';
 
 const CodeBox = ({ logData, setLogData }) => {
   const textRef = useRef(null)
