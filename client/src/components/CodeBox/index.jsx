@@ -6,6 +6,8 @@ import Editor from 'react-simple-code-editor';
 import { useStateContext } from '../../StateContext';
 
 const CodeBox = ({ logData, setLogData }) => {
+  const { challengeResponse } = useStateContext();
+  const { requestData } = useStateContext();
   const textRef = useRef(null)
 
   const [code, setCode] = React.useState(
@@ -15,11 +17,14 @@ const CodeBox = ({ logData, setLogData }) => {
   );
 
   const sendRequest = async () => {
+
     const url = "http://localhost:4000/console";
 
     const textareaElement = textRef.current;
     const lines = textareaElement.props.value.split('\n');
     let formattedCode = lines.map(line => line.trimEnd()).join('\n');
+    
+    console.log(requestData.language, challengeResponse.challenge, formattedCode)
     
     try {
       const res = await fetch(url, {
@@ -27,7 +32,7 @@ const CodeBox = ({ logData, setLogData }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({content: `Language: javascript, Challenge: 'print "hello" to console', Code: ${formattedCode}`}),
+        body: JSON.stringify({content: `language: ${requestData.language}, Challenge: ${challengeResponse.challenge}, Code: ${formattedCode}`}),
       });
 
       if (res.ok) {

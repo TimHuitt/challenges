@@ -12,14 +12,35 @@ import React, { createContext, useContext, useState } from 'react';
       'request': ''
     })
 
-    
     const [ showSettings, setShowSettings ] = useState(false)
-    
+
+    const [ challengeResponse, setChallengeResponse ] = useState({
+      ID: 'py_beg_short_find_max_number',
+      challenge: `
+Click the cog to adjust challenge settings\n
+Click "Generate New Challenge"\n
+Add your code to the code editor\n
+Click run to execute your code
+      `,
+      textHints: [
+        `'General Hints' for topic related hints`,
+        `'Code Hints' for code specific hints`,
+        `'Give Up' to view the suggested solution`
+      ],
+      codeHints: [],
+      testCases: [
+        'Test cases and examples of expected input/output'
+      ],
+      Solution: ''
+    })
+
     const value = {
       requestData,
       setRequestData,
       showSettings,
       setShowSettings,
+      challengeResponse,
+      setChallengeResponse
     }
 
     return (

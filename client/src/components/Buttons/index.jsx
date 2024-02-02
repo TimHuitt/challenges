@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { useStateContext } from '../../StateContext';
 import './Buttons.css'
 
-const Buttons = ({ setChallengeResponse }) => {
+const Buttons = () => {
   
   const { requestData, setRequestData } = useStateContext();
+  const { setChallengeResponse } = useStateContext();
   
   
   const sendRequest = async () => {

@@ -3,9 +3,10 @@ import { useStateContext } from '../../StateContext';
 import Container from '../Container'
 import './Challenges.css'
 
-const Challenges = ({ challengeResponse }) => {
+const Challenges = () => {
 
   const { showSettings, setShowSettings } = useStateContext();
+  const { challengeResponse } = useStateContext();
 
   const openSettings = () => {
     setShowSettings(true)
@@ -17,7 +18,7 @@ const Challenges = ({ challengeResponse }) => {
         <img src="/cog.svg" />
       </div>
       <Container header={'Challenge'} body={challengeResponse.challenge} />
-      <Container header={'Examples'} body={challengeResponse.testCases} />
+      <Container header={'Test Cases'} body={challengeResponse.testCases} />
       <Container header={'Hints'} body={[challengeResponse.textHints, challengeResponse.codeHints, challengeResponse.solution]} />
     </div>
   )
