@@ -71,8 +71,8 @@ const Settings = () => {
         </div>
   
         <div className="settings-buttons">
-          <button onClick={ handleSubmit }>Save Settings</button>
-          <button onClick={ handleCancel }>Cancel</button>
+          <button type="submit" onClick={ handleSubmit }>Save Settings</button>
+          <button type="button" onClick={ handleCancel }>Cancel</button>
         </div>
       </form>
     </div>
