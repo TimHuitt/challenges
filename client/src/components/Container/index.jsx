@@ -6,8 +6,8 @@ const Container = ({ header, body }) => {
   let solution
 
   if (header === 'Hints') {
-    textHints = body[0].concat(body[1])
-    // codeHints = body[1]
+    textHints = body[0]
+    codeHints = body[1]
     solution = body[2]
   }
 
@@ -38,11 +38,36 @@ const Container = ({ header, body }) => {
   const ContainerID = (header === 'Hints')
     ? 'Container hints'
     : 'Container'
-
+  console.log(textHints)
   return (
     <div className={ContainerID}>
-      <h1>{header}</h1>
-      <p>{bodyContent}</p>
+      {ContainerID === 'Container'
+      ? (
+        <>
+          <h1>{header}</h1>
+          <p>{bodyContent}</p>
+        </>
+      ) : (
+        <>
+          {textHints.map((line, index) => (
+            <div className="hint-container">
+              <div className="hint-header">
+                General Hint {index + 1}
+              </div>
+              <p>{line}</p>
+            </div>
+          ))}
+          {codeHints.map((line, index) => (
+            <div className="hint-container">
+              <div className="hint-header">
+                Code Hint {index + 1}
+              </div>
+              <p>{line}</p>
+            </div>
+          ))}
+        </>
+      )}
+      
     </div>
   )
 }
