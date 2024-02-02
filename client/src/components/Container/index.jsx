@@ -104,7 +104,7 @@ const Container = ({ header, body }) => {
               <div className="hint-header" onClick={ () => toggleVis(textHints.length + codeHints.length + 1)} >
                 Solution
               </div>
-              <p className={hintVisibility[textHints.length + codeHints.length + 1] 
+              <p style={{textAlign: 'left', paddingLeft: '10px'}} className={hintVisibility[textHints.length + codeHints.length + 1] 
                 ? "hint-content" 
                 : "hint-content hidden"
               }>
