@@ -14,6 +14,8 @@ const Container = ({ header, body }) => {
     solution = body[2]
   }
 
+  console.log(solution)
+
   const formatBody = (data) => {
     if (typeof data === 'string') {
       return data;
@@ -47,17 +49,13 @@ const Container = ({ header, body }) => {
       const hintLength = ((body[0] && body[0].length) || 0) + ((body[1] && body[1].length) || 0)
       setHintVisibility(Array(hintLength).fill(false))
 
-      textHints = body[0]
-      codeHints = body[1]
-      solution = body[2]
-
       firstRun = false
     }
   }, [])
 
-  useEffect(() => {
-    console.log(hintVisibility)
-  }, [hintVisibility])
+  // useEffect(() => {
+  //   console.log(hintVisibility)
+  // }, [hintVisibility])
   
   const bodyContent = formatBody(body);
 
@@ -84,17 +82,39 @@ const Container = ({ header, body }) => {
                 ? "hint-content" 
                 : "hint-content hidden"
               }>
-                {line}</p>
+                {line}
+              </p>
             </div>
           ))}
           {codeHints.map((line, index) => (
             <div className="hint-container">
-              <div className="hint-header">
+              <div className="hint-header" onClick={ () => toggleVis(index + textHints.length) }>
                 Code Hint {index + 1}
               </div>
-              <p>{line}</p>
+              <p className={hintVisibility[index + textHints.length] 
+                ? "hint-content" 
+                : "hint-content hidden"
+              }>
+                {line}
+              </p>
             </div>
           ))}
+          { solution ? (
+            <div className="hint-container">
+              <div className="hint-header" onClick={ () => toggleVis(textHints.length + codeHints.length + 1)} >
+                Solution
+              </div>
+              <p className={hintVisibility[textHints.length + codeHints.length + 1] 
+                ? "hint-content" 
+                : "hint-content hidden"
+              }>
+                {solution}
+              </p>
+            </div>
+          ) : (
+            ''
+          )
+          }
         </>
       )}
       

@@ -19,6 +19,7 @@ async function challenges(req, res) {
           - Always provide a unique challenge based on the history provided in the prompt. If a challenge is already present, you should create a new challenge
           - Pay close attention to the 'difficulty'  and 'length' parameters
           - Tailor your challenge to match the requested skill level and expected solution length
+          - Challenges with the difficulty of 'beginner' should be EXTREMELY simple
           - Challenges with the difficulty of 'expert' should be VERY difficult and include complex logic
           - If request details are provided, do your best to create a challenge adhering to this request
           - Provide several test cases with the challenge. Doubly ensure the accuracy of expected outputs.
@@ -41,7 +42,7 @@ async function challenges(req, res) {
             textHints: ["Provide 3-5 hints to help the user figure out the solution. These hints should not provide any code specific snippets or references to command names or methods"],
             codeHints: ["Provide 3-5 hints that are code specific and help the user determine the exact code they should be using to solve this problem"],
             testCases: ["input: test case input, output: "test case expected output"],
-            Solution: "Provide the code for the optimal solution to your challenge.",
+            solution: "Provide the code for the optimal solution to your challenge.",
             }
             '''    
         `

@@ -31,7 +31,7 @@ Click run to execute your code
       testCases: [
         "Test cases and examples of expected input/output"
       ],
-      Solution: ""
+      solution: ""
     })
 
     const value = {
