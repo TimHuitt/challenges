@@ -52,12 +52,12 @@ const Buttons = () => {
     <div id="Buttons">
       <div id="buttons-container">
         <div id="buttons-challenges">
-          <button>General Hint</button>
-          <button>Code Hint</button>
+          {/* <button>General Hint</button>
+          <button>Code Hint</button> */}
+          <button onClick={getChallenge}>Generate New Challenge</button>
         </div>
         <div id="buttons-code">
           <button>Give Up</button>
-          <button onClick={getChallenge}>Generate New Challenge</button>
         </div>
       </div>
     </div>

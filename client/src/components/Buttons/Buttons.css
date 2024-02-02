@@ -18,17 +18,14 @@
   background-color: var(--dark-bg);
   cursor: pointer;
 }
-#Buttons button:hover {
+/* #Buttons button:hover {
   color: var(--bg);
   background-color: var(--light);
-}
-.invert button:hover {
-  color: var(--lightest);
-}
-#Buttons button:active {
+} */
+/* #Buttons button:active {
   color: var(--lightest);
   background-color: var(--bg);
-}
+} */
 #buttons-container {
   display: grid;
   grid-template-columns: 30% 70%;
@@ -37,14 +34,14 @@
 }
 #buttons-challenges {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 50px;
   padding: 0 10% 0 4%;
   grid-column: 1;
 }
 #buttons-code {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 50px;
   padding: 0 4% 0 8%;
   grid-column: 2;
@@ -53,14 +50,20 @@
   color: var(--lightest);
 }
 
-#buttons-code button:first-child {
+#buttons-code button {
   background-color: var(--red);
   opacity: .5;
 }
-#buttons-code button:last-child {
+#buttons-challenges button {
   background-color: var(--blue);
   opacity: .5;
 }
+#buttons-challenges button:hover,
 #buttons-code button:hover {
   opacity: 1;
+}
+
+#buttons-challenges button:active,
+#buttons-code button:active {
+  opacity: .2;
 }
