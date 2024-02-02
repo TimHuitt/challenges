@@ -5,7 +5,7 @@ const Header = () => {
     <div id="Header">
       <div id="header-left">
         <p>
-          Code Challenger
+          CodeChallenger
         </p>
         <small>Where the AI tells <b><u>you</u></b> what to do</small>
       </div>

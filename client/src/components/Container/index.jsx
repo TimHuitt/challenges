@@ -1,9 +1,12 @@
 import './Container.css'
+import { useState, useEffect } from 'react'
 
 const Container = ({ header, body }) => {
+  let [hintVisibility, setHintVisibility] = useState([])
   let textHints
   let codeHints
   let solution
+  let firstRun = true
 
   if (header === 'Hints') {
     textHints = body[0]
@@ -32,13 +35,36 @@ const Container = ({ header, body }) => {
         .join('\n');
     }
   }
+
+  const toggleVis = index => {
+    let updatedVis = [...hintVisibility]
+    updatedVis[index] = !updatedVis[index]
+    setHintVisibility(updatedVis)
+  }
+
+  useEffect(() => {
+    if (header === 'Hints' && firstRun) {
+      const hintLength = ((body[0] && body[0].length) || 0) + ((body[1] && body[1].length) || 0)
+      setHintVisibility(Array(hintLength).fill(false))
+
+      textHints = body[0]
+      codeHints = body[1]
+      solution = body[2]
+
+      firstRun = false
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log(hintVisibility)
+  }, [hintVisibility])
   
   const bodyContent = formatBody(body);
 
   const ContainerID = (header === 'Hints')
     ? 'Container hints'
     : 'Container'
-  console.log(textHints)
+    
   return (
     <div className={ContainerID}>
       {ContainerID === 'Container'
@@ -51,10 +77,14 @@ const Container = ({ header, body }) => {
         <>
           {textHints.map((line, index) => (
             <div className="hint-container">
-              <div className="hint-header">
+              <div className="hint-header" onClick={ () => toggleVis(index) }>
                 General Hint {index + 1}
               </div>
-              <p>{line}</p>
+              <p className={hintVisibility[index] 
+                ? "hint-content" 
+                : "hint-content hidden"
+              }>
+                {line}</p>
             </div>
           ))}
           {codeHints.map((line, index) => (
