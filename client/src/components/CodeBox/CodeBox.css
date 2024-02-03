@@ -41,4 +41,8 @@
 #run-button:active {
   background-color: rgb(16, 66, 16);
 }
-
+#eval-container {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+}

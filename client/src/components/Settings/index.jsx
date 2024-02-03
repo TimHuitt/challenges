@@ -33,7 +33,7 @@ const Settings = () => {
 
   return (
     <div className="Settings" style={{ display: hidden }}>
-      <form className="settings-container" onSubmit={handleSubmit}>
+      <form className="settings-container">
         <h1>Challenge Settings</h1>
   
         <div className="settings-language">

@@ -90,6 +90,9 @@ const CodeBox = ({ logData, setLogData }) => {
       <div id="run-button-container">
         <span id="run-button" onClick={handleRun}>Run!</span>
       </div>
+      <div id="eval-container">
+        <img src="/cog.svg" />
+      </div>
     </div>
   )
 }

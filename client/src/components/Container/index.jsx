@@ -1,7 +1,9 @@
 import './Container.css'
+import { useStateContext } from '../../StateContext';
 import { useState, useEffect } from 'react'
 
 const Container = ({ header, body }) => {
+  const { challengeResponse } = useStateContext();
   let [hintVisibility, setHintVisibility] = useState([])
   let textHints
   let codeHints
@@ -51,12 +53,8 @@ const Container = ({ header, body }) => {
 
       firstRun = false
     }
-  }, [])
+  }, [challengeResponse])
 
-  // useEffect(() => {
-  //   console.log(hintVisibility)
-  // }, [hintVisibility])
-  
   const bodyContent = formatBody(body);
 
   const ContainerID = (header === 'Hints')

@@ -22,16 +22,12 @@ Click "New Challenge"\n
 Add your code to the code editor\n
 Click run to execute your code
       `,
-      textHints: [
-        `"General Hints" for topic related hints`,
-        `"Code Hints" for code specific hints`,
-        `"Give Up" to view the suggested solution`
-      ],
-      codeHints: [],
+      textHints: ['View general hints related to the generated challenge'],
+      codeHints: ['View code specific hints related to the generated challenge'],
       testCases: [
         "Test cases and examples of expected input/output"
       ],
-      solution: ""
+      solution: "View the suggested solution if you get stuck"
     })
 
     const value = {
