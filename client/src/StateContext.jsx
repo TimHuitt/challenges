@@ -16,6 +16,7 @@ import React, { createContext, useContext, useState } from 'react';
 
     const [ challengeResponse, setChallengeResponse ] = useState({
       ID: 'py_beg_short_find_max_number',
+      name: 'Challenge',
       challenge: `
 Click the cog to adjust challenge settings\n
 Click "New Challenge"\n

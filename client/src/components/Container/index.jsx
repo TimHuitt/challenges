@@ -69,9 +69,17 @@ const Container = ({ header, body }) => {
         <>
           <h1>{header}</h1>
           { Array.isArray(body) ? (
-            <p>{'test'}</p>
+            body.map((line) => {
+              return (
+                <div className="text-container">
+                  <p>{"input: " + line[0] + "\n  > " + line[1] + "\n"}</p>
+                </div>
+              )
+            })
           ) : (
-            <p>{bodyContent}</p>
+            <div className="text-container">
+              <p>{bodyContent}</p>
+            </div>
           )}
         </>
       ) : (
