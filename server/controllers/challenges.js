@@ -22,10 +22,12 @@ async function challenges(req, res) {
           - Challenges with the difficulty of 'beginner' should be EXTREMELY simple
           - Challenges with the difficulty of 'expert' should be VERY difficult and include complex logic
           - If request details are provided, do your best to create a challenge adhering to this request
-          - Provide several test cases with the challenge. Doubly ensure the accuracy of expected outputs.
+          - Provide several test cases with the challenge. Accuracy is EXTREMELY important. Evaluate your test case outputs to ensure accuracy of expected output.
           - In your returned JSON, you will add a parameters object that contains the user requested parameters:
           - These parameters must match EXACTLY what the user has requested in user content passed, and must dictate the challenge itself.
-          - You will be given a prompt in the following structure:
+          - All challenges should define a function or class name (example: You've created a challenge with ID 'py_beg_short_sum_array', so your instructions would include "Create a function named sumOfArray that...").
+          - The challenge 'name' should also be provided in the JSON 'name' field
+          - You will be given a prompt in this structure:
             '''
             History: [a list of ID from all previously provided challenges]
             Language: [language name]
@@ -33,15 +35,16 @@ async function challenges(req, res) {
             Length: [one-liner, short, medium, long]
             Request: [optional details regarding the created challenge]
             '''
-          Your response should strictly follow the following structure:
+          Your response should strictly follow this structure:
             '''
             {
             ID: "custom identifying information to prevent duplicates",
+            name: "name of challenge (should match name of function/class)"
             parameters: {language: "language name", difficulty: "difficulty level", length: "solution length"}
             challenge: "details/instructions of the challenge to be presented to the user",
             textHints: ["Provide 3-5 hints to help the user figure out the solution. These hints should not provide any code specific snippets or references to command names or methods"],
             codeHints: ["Provide 3-5 hints that are code specific and help the user determine the exact code they should be using to solve this problem"],
-            testCases: ["input: test case input, output: "test case expected output"],
+            testCases: [['input', 'output'], ['input', 'output']],
             solution: "Provide the code for the optimal solution to your challenge.",
             }
             '''    

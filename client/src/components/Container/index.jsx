@@ -8,6 +8,7 @@ const Container = ({ header, body }) => {
   let textHints
   let codeHints
   let solution
+  let testCases
   let firstRun = true
 
   if (header === 'Hints') {
@@ -16,7 +17,7 @@ const Container = ({ header, body }) => {
     solution = body[2]
   }
 
-  console.log(solution)
+  console.log(testCases)
 
   const formatBody = (data) => {
     if (typeof data === 'string') {
@@ -60,43 +61,55 @@ const Container = ({ header, body }) => {
   const ContainerID = (header === 'Hints')
     ? 'Container hints'
     : 'Container'
-    
+  
   return (
     <div className={ContainerID}>
       {ContainerID === 'Container'
       ? (
         <>
           <h1>{header}</h1>
-          <p>{bodyContent}</p>
+          { Array.isArray(body) ? (
+            <p>{'test'}</p>
+          ) : (
+            <p>{bodyContent}</p>
+          )}
         </>
       ) : (
         <>
-          {textHints.map((line, index) => (
-            <div className="hint-container">
-              <div className="hint-header" onClick={ () => toggleVis(index) }>
-                General Hint {index + 1}
+          { textHints ? (
+            textHints.map((line, index) => (
+              <div className="hint-container">
+                <div className="hint-header" onClick={ () => toggleVis(index) }>
+                  General Hint {index + 1}
+                </div>
+                <p className={hintVisibility[index] 
+                  ? "hint-content" 
+                  : "hint-content hidden"
+                }>
+                  {line}
+                </p>
               </div>
-              <p className={hintVisibility[index] 
-                ? "hint-content" 
-                : "hint-content hidden"
-              }>
-                {line}
-              </p>
-            </div>
-          ))}
-          {codeHints.map((line, index) => (
-            <div className="hint-container">
-              <div className="hint-header" onClick={ () => toggleVis(index + textHints.length) }>
-                Code Hint {index + 1}
+            ))
+          ) : (
+            ''
+          )}
+          { codeHints ? (
+            codeHints.map((line, index) => (
+              <div className="hint-container">
+                <div className="hint-header" onClick={ () => toggleVis(index + textHints.length) }>
+                  Code Hint {index + 1}
+                </div>
+                <p className={hintVisibility[index + textHints.length] 
+                  ? "hint-content" 
+                  : "hint-content hidden"
+                }>
+                  {line}
+                </p>
               </div>
-              <p className={hintVisibility[index + textHints.length] 
-                ? "hint-content" 
-                : "hint-content hidden"
-              }>
-                {line}
-              </p>
-            </div>
-          ))}
+            ))
+          ) : (
+            ''
+          )}
           { solution ? (
             <div className="hint-container">
               <div className="hint-header" onClick={ () => toggleVis(textHints.length + codeHints.length + 1)} >
@@ -111,8 +124,7 @@ const Container = ({ header, body }) => {
             </div>
           ) : (
             ''
-          )
-          }
+          )}
         </>
       )}
       
