@@ -5,7 +5,6 @@ const morgan = require("morgan")
 require("dotenv").config();
 // require("./config/db.connection.js")
 
-const { PORT } = process.env;
 const challengesRouter = require('./routes/challenges')
 const consoleRouter = require('./routes/console')
 
@@ -35,4 +34,12 @@ app.get("/", (req, res) => {
   res.send("incorrect path");
 });
 
-app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
+// app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
+
+let port = process.env.PORT;
+
+if (port == null || port == "") {
+  port = 8000;
+}
+
+app.listen(port, () => console.log(`listening on PORT ${port}`));

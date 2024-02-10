@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 .env
 notes.md
+
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env

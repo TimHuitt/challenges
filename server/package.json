@@ -18,6 +18,9 @@
     "morgan": "^1.10.0",
     "openai": "^4.24.1"
   },
+  "engines": {
+    "node": "21.2.0"
+  },
   "devDependencies": {
     "nodemon": "^3.0.2"
   }
