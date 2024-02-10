@@ -1,12 +1,14 @@
 {
   "name": "code-challenger",
-  "version": "1.0.0",
-  "description": "Your application description",
+  "version": "0.0.1",
+  "description": "",
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
+  "author": "",
+  "license": "",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -16,5 +18,8 @@
     "openai": "^4.24.1"
   },
   "devDependencies": {
+  },
+  "engines": {
+    "node": "21.x"
   }
 }
